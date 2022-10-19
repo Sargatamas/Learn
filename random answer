@@ -1,0 +1,13 @@
+from random import*
+answers = ['Undoubtedly', 'I think so', 'Not sure yet, try again', 'Do not even think', 'It is a foregone conclusion', 'Most likely', 'Ask later', 'My answer is no', 'Without any doubts', 'Good prospects', 'Better not tell',
+    'According to my information, no.', 'Definitely yes', 'The signs say yes', 'Can not predict right now', 'Prospects are not very good', 'You can be sure of it', 'Yes', 'Concentrate and ask again', 'Highly doubtful']
+print('I am a magic ball and I know the answer to any of your questions')
+while True:
+    print('Input your question')
+    input()
+    print(choice(answers))
+    print('Do you want to ask again? y/n')
+    if input() == 'y':
+        continue
+    else:
+        break
