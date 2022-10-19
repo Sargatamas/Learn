@@ -1,0 +1,30 @@
+from random import*
+n = randrange(101)
+print('Numerical guessing game')
+
+def is_valid(num):
+    return num.isdigit() and 1 <= int(num) <= 100
+
+print('Enter a number from 1 to 100')
+count = 0
+while True:
+    count += 1
+    s = input()
+    if not is_valid(s):
+        print('Or maybe we should enter an integer from 1 to 100?')
+        continue
+    else:
+        s = int(s)
+    if s > n:
+        print('Your number is higher than expected, please try again')
+    elif s < n:
+        print('Your number is lower than expected, please try again)
+    elif s == n:
+        print('You guessed correctly on the , count, 'try Do you want to play again? y/n')
+        if input() == 'y':
+            n = randrange(101)
+            count = 0
+            print('Enter a number from 1 to 100')
+        else:
+            break
+       
