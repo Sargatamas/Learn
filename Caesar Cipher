@@ -1,1 +1,43 @@
-def
+def fn(shift, str1):
+    str2 = ''
+    for i in range(len(str1)):
+# check letters
+        if not str1[i].isalpha():
+            str2 += str1[i]
+# check A-Z
+        elif (64 < ord(str1[i]) < 91):
+            if 64 < ord(str1[i]) + shift < 91:
+                str2 += chr(ord(str1[i]) + shift)
+            elif ord(str1[i]) + shift > 91:
+                str2 += chr(ord(str1[i]) + shift - 26)
+            elif ord(str1[i]) + shift < 64:
+                str2 += chr(ord(str1[i]) + shift + 26)
+# check a-z
+        elif (96 < ord(str1[i]) < 123):
+            if 96 < ord(str1[i]) + shift < 123:
+                str2 += chr(ord(str1[i]) + shift)
+            elif ord(str1[i]) + shift > 123:
+                str2 += chr(ord(str1[i]) + shift - 26)
+            elif ord(str1[i]) + shift < 96:
+                str2 += chr(ord(str1[i]) + shift + 26)
+# check А-Я
+        elif (1039 < ord(str1[i]) < 1072):
+            if 1039 < ord(str1[i]) + shift < 1072:
+                str2 += chr(ord(str1[i]) + shift)
+            elif ord(str1[i]) + shift > 1072:
+                str2 += chr(ord(str1[i]) + shift - 32)
+            elif ord(str1[i]) + shift < 1039:
+                str2 += chr(ord(str1[i]) + shift + 32)
+# check а-я
+        elif (1072 < ord(str1[i]) < 1104):
+            if 1071 < ord(str1[i]) + shift < 1104:
+                str2 += chr(ord(str1[i]) + shift)
+            elif ord(str1[i]) + shift > 1104:
+                str2 += chr(ord(str1[i]) + shift - 32)
+            elif ord(str1[i]) + shift < 1072:
+                str2 += chr(ord(str1[i]) + shift + 32)   
+    return str2
+ch_sh = int(input('Enter cipher shift '))
+text = input('Enter encrypted text ')
+print(fn(ch_sh, text))
+
