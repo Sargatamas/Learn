@@ -1,0 +1,8 @@
+n = int(input())
+k= int(input())
+pos=0
+str = list(range(1, n+1))
+while len(str) > 1:
+    pos = (pos + k-1)%len(str)
+    del str[pos]
+print(int(str[0]))
