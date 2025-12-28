@@ -1,0 +1,15 @@
+a,b = input()
+x = 'abcdefgh'.find(a)
+y = 8 - int(b)
+matrix = [['.'] * 8 for _ in range(8)]
+
+for i in range(8):
+    for j in range(8):
+        if (i == y): matrix[i][j] = '*'
+        if (j == x): matrix[i][j] = '*'
+        if (abs(y - i) == abs(x-j)): matrix[i][j] = '*'
+matrix[y][x] = 'Q'
+for row in matrix:
+    print(*row)
+
+
