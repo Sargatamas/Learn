@@ -1,0 +1,16 @@
+n, m = map(int, input().split())
+mx1 = [[int(i) for i in input().split()] for _ in range(n)]
+input()
+m, k = map(int, input().split())
+mx2 = [[int(i) for i in input().split()] for _ in range(m)]
+mx3 = [[0] * k for _ in range(n)]
+
+for i in range(n):
+    for j in range(k):
+        for r in range(m):
+            mx3[i][j] += mx1[i][r] * mx2[r][j]
+for i in range(n):
+    for j in range(k):
+        print(mx3[i][j], end=' ')
+    print()
+
