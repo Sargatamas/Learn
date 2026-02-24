@@ -1,0 +1,25 @@
+from random import *
+import string
+LETTER = {'EN': [x for x in string.ascii_uppercase if x not in 'OI'],
+          'en': [x for x in string.ascii_lowercase if x not in 'ol'],
+          'dig': [x for x in string.digits if x not in '01']}
+n = int(input())
+m = int(input())
+
+def generate_password(length):
+    passw = ''
+    while len(passw) < length:
+        if len(passw) < length:
+            passw += choice(LETTER["EN"])
+        if len(passw) < length:
+            passw += choice(LETTER['en'])
+        if len(passw) < length:
+            passw += choice(LETTER['dig'])
+    return passw
+
+def generate_passwords(count, length):
+    for _ in range(count):
+        print(generate_password(length))
+        
+generate_passwords(n, m)
+
