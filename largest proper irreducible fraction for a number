@@ -1,0 +1,9 @@
+from fractions import Fraction
+from math import *
+n = int(input())
+s = Fraction(1, n-1)
+for i in range(n//2):
+    if gcd(i+1, n-(i+1)) == 1 and Fraction(i+1, n-(i+1))>s:
+        s = Fraction(i+1, n-(i+1))
+    
+print(s)
