@@ -1,0 +1,10 @@
+import turtle as t
+import math as m
+t.begin_fill()
+t.fillcolor('red')
+for i in range(0,400,1):
+  
+  x = 128*m.sin(m.radians(i))**3
+  y = 8*(13 * m.cos(m.radians(i))-5*m.cos(m.radians(2*i))-2*m.cos(m.radians(3*i))-m.cos(m.radians(4*i)) - 5)
+  t.goto(x,y)
+t.end_fill()
