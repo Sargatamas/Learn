@@ -1,0 +1,24 @@
+size_file = {'B': 1, 'KB': 1024, 'MB': 1048576, 'GB': 1073741824}
+def frmt(ch):
+    if ch > 1024**3:
+        return f'{round(ch/1024**3)} GB'
+    elif ch > 1024**2:
+        return f'{round(ch/1024**2)} MB'
+    elif ch > 1024:
+        return f'{round(ch/1024)} KB'
+    else:
+        return f'{ch} B'
+with open('files.txt', 'r', encoding='utf-8') as file:
+    dic_name, dic_size ={}, {}
+    for line in file:
+        key= line.split()[0].split('.')[1]
+        name= line.split()[0].split('.')[0]
+        size= int(line.split()[1]) * size_file[line.split()[2]]
+        dic_name.setdefault(key, []).append(name)
+        dic_size[key] = dic_size.get(key, 0) + size
+for k,v in sorted(dic_name.items()):
+    for i in sorted(v):
+        print(i, '.', k, sep='')
+    print('----------')
+    print('Summary:', frmt(dic_size[k]), end='\n')
+    print()
