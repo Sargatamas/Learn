@@ -1,1 +1,17 @@
+from datetime import datetime
+def delta(strk):
+    d1=datetime.strptime(strk[:10], '%d.%m.%Y').toordinal()
+    d2=datetime.strptime(strk[11:], '%d.%m.%Y').toordinal()
+    return range(d1,d2+1)
+def is_available_date(booked_dates, date_for_booking):
+    res_day, op_day = set(), set()
+    for i in booked_dates:
+        if len(i)==10: 
+            res_day.add(datetime.strptime(i, '%d.%m.%Y').toordinal())
+        else: res_day.update(delta(i))
+    for i in [date_for_booking]:
+        if len(i)==10: 
+            op_day.add(datetime.strptime(i, '%d.%m.%Y').toordinal())
+        else: op_day.update(delta(i))         
+    return op_day.isdisjoint(res_day) 
 
