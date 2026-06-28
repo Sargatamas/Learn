@@ -1,0 +1,27 @@
+from datetime import date, timedelta, datetime
+ptrn='%d.%m.%Y %H:%M'
+def choose_plural(amount, declensions): 
+    last_two = amount % 100
+    last_one = amount % 10 
+    if 11 <= last_two <= 14: index = 2
+    elif last_one == 1: index = 0
+    elif 2 <= last_one <= 4: index = 1
+    else: index = 2  
+    return f'{amount} {declensions[index]}'
+d1=datetime(2022, 11, 8, 12, 0)
+d2=datetime.strptime(input(), ptrn)
+if d2>=d1: print('Курс уже вышел!')
+else:
+    print('До выхода курса осталось: ', end='')
+    td=d1-d2
+    if td.days:
+        print(choose_plural(td.days, ('день', 'дня', 'дней')), end='')
+        if td.seconds>=3600:
+            print(' и', choose_plural((td.seconds)//3600, ('час', 'часа', 'часов')))
+    else:
+        if td.seconds>=3600:
+            print(choose_plural((td.seconds)//3600, ('час', 'часа', 'часов')), end='')
+            if (((td.seconds)//60)%60):
+                print(' и', choose_plural((((td.seconds)//60)%60), ('минута', 'минуты', 'минут')))
+        else:
+            print(choose_plural((((td.seconds)//60)%60), ('минута', 'минуты', 'минут')))
